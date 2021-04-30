@@ -1,0 +1,23 @@
+Projeto: crud php utilizando POO, DAO
+
+Objetivo:{ 
+
+*Criar um crud utilizando POO e DAO onde serão 
+criadas classes para conexão e usuário;
+}
+
+Premissas{
+*A aplicação funcionará apenas na página principal; 
+
+*Fazer com que na página principal se não houver registros,
+ seja exibida uma mensagem de: "registros não encontrados" e
+um formulário para inserir registros; 
+
+*Ao abrir a página principal se existir um ou mais
+registro inserido, exibi-los em ordem alfabética. E ter a 
+opção de inserir, alterar e deletar registros.
+}
+
+
+
+
