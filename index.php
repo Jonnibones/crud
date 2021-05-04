@@ -27,10 +27,15 @@ require_once("config.php");
 </main>
 
 <?php 
-require_once("config.php");
-$showlist = Usuario::getList();
-echo json_encode($showlist); 
 
+$inserir = new Usuario("","gool","fdjfsj@hghg");
+$inserir->insertUsuario();
+echo $inserir;
+
+/*$deletar = new Usuario();
+$deletar->loadByid(13);
+$deletar->deleteUsuario();
+echo $deletar;*/
  ?>
 
   </body>

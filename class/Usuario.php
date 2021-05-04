@@ -7,7 +7,6 @@ class Usuario extends Sql{
 private $idfuncionario;
 private $nomefuncionario;
 private $emailfuncionario;
-private $dataregistro;
 
 //Métodos getters e setters
 public function getIdfuncionario(){
@@ -28,14 +27,10 @@ public function getEmailfuncionario(){
 public function setEmailfuncionario($value){
 	$this->emailfuncionario = $value;
 }
-public function getDataregistro(){
-	return $this->dataregistro;
-}
-public function setDataregistro($value){
-	$this->dataregistro = $value;
-}
 
-//metodos
+//Métodos
+
+//Listar usuarios
 public static function getList(){
 
 	$sql = new Sql();
@@ -43,6 +38,82 @@ public static function getList(){
 	return $sql->select("SELECT * FROM tb_funcionarios;");
 
 }
+
+public function setData($data){
+
+	$this->setIdfuncionario($data['id_usuario']);
+	$this->setNomefuncionario($data['nome_usuario']);
+	$this->setEmailfuncionario($data['email_usuario']);
+
+}
+
+//Inserir usuários
+
+public function insertUsuario(){
+
+	$sql = new Sql();
+
+	/*"INSERT INTO `dbphp7`.`tb_funcionarios` (`id_usuario`,`nome_usuario`, `email_usuario`) VALUES (:NOME, :EMAIL)"*/
+
+	$stmt = $sql->select("CALL sp_funcionarios_insert(:NOME, :EMAIL)", array(
+
+		':NOME'=>$this->getNomefuncionario(),
+		':EMAIL'=>$this->getEmailfuncionario()
+
+
+	));
+
+	if(count($stmt) > 0){
+		$this->setData($stmt[0]);
+	}
+
+}
+
+public function deleteUsuario(){
+
+	$sql = new Sql();
+
+	$sql->query("DELETE FROM tb_funcionarios WHERE id_usuario = :ID", array(
+
+			':ID'=>$this->getIdfuncionario()
+
+	));
+
+
+}
+
+public function loadByid($id){
+
+	$sql = new Sql();
+
+	$results = $sql->select("SELECT * FROM tb_funcionarios WHERE id_usuario = :ID", array(
+		":ID"=>$id
+	));
+
+	if (count($results) > 0){
+
+	$this->setData($results[0]);
+
+	}
+
+}
+
+
+
+public function __toString(){
+
+	return json_encode(array(
+
+		"idusuario"=>$this->getIdfuncionario(),
+		"nomefuncionario"=>$this->getNomefuncionario(),
+		"emailfuncionario"=>$this->getEmailfuncionario()
+		
+
+
+	));	
+
+}
+
 
 }//fim da classe
 
