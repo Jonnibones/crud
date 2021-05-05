@@ -6,7 +6,7 @@ require_once("config.php");
   	<main>
   	<!--Formulário-->
   	<div class="container-md">
-    <form>
+    <form method="POST" action="#">
 
   <div class="mb-3">
     <label class="form-label">Nome</label>
@@ -27,16 +27,27 @@ require_once("config.php");
 </main>
 
 <?php 
+/*carrega uma lista de usuários
+$lista = Usuario::getList();
+echo json_encode($lista);*/
 
-$inserir = new Usuario("","gool","fdjfsj@hghg");
-$inserir->insertUsuario();
-echo $inserir;
+/*$inserir = new Usuario();
+$inserir->insertUsuario("gool","fdjfsj@hghg");
+echo $inserir;*/
 
 /*$deletar = new Usuario();
 $deletar->loadByid(13);
 $deletar->deleteUsuario();
 echo $deletar;*/
+
+/*alterar um usuario
+$usuario = new Usuario();
+$usuario->loadByid(7);
+$usuario->updateUsuario("Ken", "ken@gmail");
+echo $usuario; */
  ?>
+
+
 
   </body>
 

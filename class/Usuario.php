@@ -38,7 +38,7 @@ public static function getList(){
 	return $sql->select("SELECT * FROM tb_funcionarios;");
 
 }
-
+//Inserir dados set
 public function setData($data){
 
 	$this->setIdfuncionario($data['id_usuario']);
@@ -48,27 +48,23 @@ public function setData($data){
 }
 
 //Inserir usuários
+public function insertUsuario($insname, $insemail){
 
-public function insertUsuario(){
+	$this->setNomefuncionario($insname);
+	$this->setEmailfuncionario($insemail);
 
 	$sql = new Sql();
 
-	/*"INSERT INTO `dbphp7`.`tb_funcionarios` (`id_usuario`,`nome_usuario`, `email_usuario`) VALUES (:NOME, :EMAIL)"*/
-
-	$stmt = $sql->select("CALL sp_funcionarios_insert(:NOME, :EMAIL)", array(
+	$sql->query("INSERT INTO `dbphp7`.`tb_funcionarios` (`nome_usuario`, `email_usuario`) VALUES ( :NOME, :EMAIL)", array(
 
 		':NOME'=>$this->getNomefuncionario(),
 		':EMAIL'=>$this->getEmailfuncionario()
 
-
 	));
-
-	if(count($stmt) > 0){
-		$this->setData($stmt[0]);
-	}
 
 }
 
+//Deletar usuário
 public function deleteUsuario(){
 
 	$sql = new Sql();
@@ -81,7 +77,26 @@ public function deleteUsuario(){
 
 
 }
+//Alterar usuário
+public function updateUsuario($newname, $newemail){
 
+	$this->setNomefuncionario($newname);
+	$this->setEmailfuncionario($newemail);
+
+	$sql = new Sql();
+
+	$sql->query("UPDATE tb_funcionarios SET nome_usuario = :NOME, email_usuario = :EMAIL WHERE id_usuario = :ID", array(
+
+		':NOME'=>$this->getNomefuncionario(),
+		':EMAIL'=>$this->getEmailfuncionario(),
+		':ID'=>$this->getIdfuncionario()
+
+
+	));
+
+}
+
+//Carregar usuário pelo ID
 public function loadByid($id){
 
 	$sql = new Sql();
@@ -99,7 +114,7 @@ public function loadByid($id){
 }
 
 
-
+//Retornar dados em Json
 public function __toString(){
 
 	return json_encode(array(
