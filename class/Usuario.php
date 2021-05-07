@@ -61,6 +61,8 @@ public function insertUsuario($insname, $insemail){
 		':EMAIL'=>$this->getEmailfuncionario()
 
 	));
+	
+	header("location:index.php");
 
 }
 

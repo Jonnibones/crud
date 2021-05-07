@@ -6,7 +6,7 @@ require_once("config.php");
   	<main>
   	<!--Formulário-->
   	<div class="container-md">
-    <form method="POST" action="#">
+    <form method="POST" action="processa.php">
 
   <div class="mb-3">
     <label class="form-label">Nome</label>
@@ -18,7 +18,7 @@ require_once("config.php");
     <input type="email" name="nm_email" class="form-control" id="id_email">
   </div>
 
-  <button type="submit" class="btn btn-success">Cadastrar</button>
+  <button type="submit" name="btn_enviar" class="btn btn-success">Cadastrar</button>
   
 </form>
 </div>
@@ -47,6 +47,37 @@ $usuario->updateUsuario("Ken", "ken@gmail");
 echo $usuario; */
  ?>
 
+ <div class="container-md">
+   <table id="tab" class="table">
+   	<!--Colunas-->
+<thead>
+  <tr>
+ 	<th>Id funcionário</th>
+    <th>Nome funcionário</th>
+    <th>Email funcionário</th>
+    <th colspan="3">Ação</th>
+  </tr>
+</thead>
+<?php 
+ 
+ $lista = new Usuario();
+
+ $lista->loadByid(1);
+
+ 
+
+ var_dump($lista);
+
+ ?>
+<tr>
+	<td></td>
+	<td></td>
+	<td></td>
+</tr>
+
+
+</table>
+</div>
 
 
   </body>
