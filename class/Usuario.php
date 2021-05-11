@@ -1,7 +1,6 @@
 <?php 
 
-
-class Usuario extends Sql{
+class Usuario {
 
 //Atributos
 private $idfuncionario;
@@ -38,6 +37,30 @@ public static function getList(){
 	return $sql->select("SELECT * FROM tb_funcionarios;");
 
 }
+//Listar usuario por id
+public static function getListid(){
+
+	$sql = new Sql();
+
+	return $sql->select("SELECT id_usuario FROM tb_funcionarios;");
+
+}
+//Listar usuario por nome
+public static function getListnome(){
+
+	$sql = new Sql();
+
+	return $sql->select("SELECT nome_usuario FROM tb_funcionarios;");
+
+}
+//Listar usuario por email
+public static function getListemail(){
+
+	$sql = new Sql();
+
+	return $sql->select("SELECT email_usuario FROM tb_funcionarios;");
+
+}
 //Inserir dados set
 public function setData($data){
 
@@ -46,7 +69,6 @@ public function setData($data){
 	$this->setEmailfuncionario($data['email_usuario']);
 
 }
-
 //Inserir usuários
 public function insertUsuario($insname, $insemail){
 
@@ -61,11 +83,10 @@ public function insertUsuario($insname, $insemail){
 		':EMAIL'=>$this->getEmailfuncionario()
 
 	));
-	
+
 	header("location:index.php");
 
 }
-
 //Deletar usuário
 public function deleteUsuario(){
 
@@ -74,9 +95,7 @@ public function deleteUsuario(){
 	$sql->query("DELETE FROM tb_funcionarios WHERE id_usuario = :ID", array(
 
 			':ID'=>$this->getIdfuncionario()
-
 	));
-
 
 }
 //Alterar usuário
@@ -92,12 +111,9 @@ public function updateUsuario($newname, $newemail){
 		':NOME'=>$this->getNomefuncionario(),
 		':EMAIL'=>$this->getEmailfuncionario(),
 		':ID'=>$this->getIdfuncionario()
-
-
 	));
 
 }
-
 //Carregar usuário pelo ID
 public function loadByid($id){
 
@@ -114,8 +130,6 @@ public function loadByid($id){
 	}
 
 }
-
-
 //Retornar dados em Json
 public function __toString(){
 
@@ -124,13 +138,8 @@ public function __toString(){
 		"idusuario"=>$this->getIdfuncionario(),
 		"nomefuncionario"=>$this->getNomefuncionario(),
 		"emailfuncionario"=>$this->getEmailfuncionario()
-		
-
-
 	));	
-
 }
-
 
 }//fim da classe
 

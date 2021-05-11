@@ -26,10 +26,11 @@ require_once("config.php");
 
 </main>
 
-<?php 
-/*carrega uma lista de usuários
-$lista = Usuario::getList();
-echo json_encode($lista);*/
+<!--<?php 
+
+//carrega uma lista de usuários
+//$lista = Usuario::getList();
+//echo json_encode($lista);
 
 /*$inserir = new Usuario();
 $inserir->insertUsuario("gool","fdjfsj@hghg");
@@ -45,7 +46,7 @@ $usuario = new Usuario();
 $usuario->loadByid(7);
 $usuario->updateUsuario("Ken", "ken@gmail");
 echo $usuario; */
- ?>
+ ?>-->
 
  <div class="container-md">
    <table id="tab" class="table">
@@ -58,26 +59,23 @@ echo $usuario; */
     <th colspan="3">Ação</th>
   </tr>
 </thead>
+
 <?php 
- 
- $lista = new Usuario();
 
- $lista->loadByid(1);
-
- 
-
- var_dump($lista);
+$deletar = new Usuario();
+$deletar->loadByid(15);
+$deletar->deleteUsuario();
 
  ?>
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-</tr>
 
+<td><?php $listaid = Usuario::getListid(); echo json_encode($listaid); ?></td>
+<td><?php $listanome = Usuario::getListnome(); echo json_encode($listanome); ?></td>
+<td><?php $listaemail = Usuario::getListemail(); echo json_encode($listaemail); ?></td>
 
 </table>
 </div>
+</main>
+
 
 
   </body>
