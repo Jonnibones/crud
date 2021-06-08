@@ -26,27 +26,6 @@ require_once("config.php");
 
 </main>
 
-<!--<?php 
-
-//carrega uma lista de usuários
-//$lista = Usuario::getList();
-//echo json_encode($lista);
-
-/*$inserir = new Usuario();
-$inserir->insertUsuario("gool","fdjfsj@hghg");
-echo $inserir;*/
-
-/*$deletar = new Usuario();
-$deletar->loadByid(13);
-$deletar->deleteUsuario();
-echo $deletar;*/
-
-/*alterar um usuario
-$usuario = new Usuario();
-$usuario->loadByid(7);
-$usuario->updateUsuario("Ken", "ken@gmail");
-echo $usuario; */
- ?>-->
 
  <div class="container-md">
    <table id="tab" class="table">
@@ -60,17 +39,34 @@ echo $usuario; */
   </tr>
 </thead>
 
-<?php 
+<thead>
+<td>
+<?php $usu_id = new Usuario();
+$lista = $usu_id->getListid();
+ foreach ($lista as $value) {
+ $lista2 = $value;
+ echo "<br>".$lista2."<br>";
+}  ?>
+</td>
 
-$deletar = new Usuario();
-$deletar->loadByid(15);
-$deletar->deleteUsuario();
+<td>
+<?php $usu_id = new Usuario();
+$lista = $usu_id->getListnome();
+ foreach ($lista as $value) {
+ $lista2 = $value;
+ echo "<br>".$lista2."<br>";
+}  ?>
+</td>
 
- ?>
-
-<td><?php $listaid = Usuario::getListid(); echo json_encode($listaid); ?></td>
-<td><?php $listanome = Usuario::getListnome(); echo json_encode($listanome); ?></td>
-<td><?php $listaemail = Usuario::getListemail(); echo json_encode($listaemail); ?></td>
+<td>
+<?php $usu_id = new Usuario();
+$lista = $usu_id->getListemail();
+ foreach ($lista as $value) {
+ $lista2 = $value;
+ echo "<br>".$lista2."<br>";
+}  ?>
+</td>
+</thead>
 
 </table>
 </div>
