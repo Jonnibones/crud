@@ -10,12 +10,12 @@ require_once("config.php");
 
   <div class="mb-3">
     <label class="form-label">Nome</label>
-    <input type="text" class="form-control" id="id_name" name="nm_nome">
+    <input type="text" class="form-control" value="" id="id_name" name="inp_nome">
   </div>
 
   <div class="mb-3">
     <label class="form-label">E-mail</label>
-    <input type="email" name="nm_email" class="form-control" id="id_email">
+    <input type="email" name="inp_email" class="form-control" value="" id="id_email">
   </div>
 
   <button type="submit" name="btn_enviar" class="btn btn-success">Cadastrar</button>
@@ -30,43 +30,36 @@ require_once("config.php");
  <div class="container-md">
    <table id="tab" class="table">
    	<!--Colunas-->
-<thead>
-  <tr>
- 	<th>Id funcionário</th>
-    <th>Nome funcionário</th>
-    <th>Email funcionário</th>
-    <th colspan="3">Ação</th>
-  </tr>
-</thead>
 
-<thead>
-<td>
-<?php $usu_id = new Usuario();
-$lista = $usu_id->getListid();
- foreach ($lista as $value) {
- $lista2 = $value;
- echo "<br>".$lista2."<br>";
-}  ?>
-</td>
+    <tr>
+      <th>Id Funcionário</th>
+      <th>Nome Funcionário</th>
+      <th>Email Funcionário</th>
+      <th>Ação</th>
+    </tr>
 
-<td>
-<?php $usu_id = new Usuario();
-$lista = $usu_id->getListnome();
- foreach ($lista as $value) {
- $lista2 = $value;
- echo "<br>".$lista2."<br>";
-}  ?>
-</td>
+    <?php
+    $lista = new Usuario();
+    $listagem = $lista->getList();
+    $num = 0;
+    $lista = "";
+    foreach ($listagem as $value) {
+     $id = "";
+     $id = $listagem[$num][0];
+     $lista .= "<tr>
+     <td>" .$listagem[$num][0]. "</td>
+     <td>" .$listagem[$num][1]. "</td>
+     <td>" .$listagem[$num][2]. "</td>
+     <td><a class='btn btn-info' href='index.php?edit=$id'>Editar</a>
+     <a class='btn btn-danger' href='processa.php?delete=$id'>Deletar</a></td>
+     </tr>";
+     $num++;
+    }
+    echo $lista;
+    ?>
 
-<td>
-<?php $usu_id = new Usuario();
-$lista = $usu_id->getListemail();
- foreach ($lista as $value) {
- $lista2 = $value;
- echo "<br>".$lista2."<br>";
-}  ?>
-</td>
-</thead>
+    
+
 
 </table>
 </div>
