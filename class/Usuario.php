@@ -97,12 +97,7 @@ public function updateUsuario($id, $newname, $newemail){
 	$this->setEmailfuncionario($newemail);
 	$stmt = $this->conn->prepare("UPDATE tb_funcionarios SET nome_usuario = '$newname', email_usuario = '$newemail' WHERE id_usuario = $id");
 	$stmt->execute();
-	if ($stmt->rowCount() > 0) {
-		$mensagem = "Registro alterado";
-	}else{
-		$mensagem = "Falha";
-	}
-	return $mensagem;
+	
 }catch(Exception $e){
 	print $e->getMessage();
 }
