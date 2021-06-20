@@ -32,14 +32,9 @@ $_SESSION['btnname'] = "Cadastrar";
 </form>
 </div>
 
-<?php
-  unset($_SESSION['valor']);
-  
-  ?>
-
+<!--Tabela-->
  <div class="container-md">
    <table id="tab" class="table">
-   	<!--Colunas-->
 
     <tr>
       <th>Id Funcionário</th>
@@ -51,26 +46,28 @@ $_SESSION['btnname'] = "Cadastrar";
     <?php
     $lista = new Usuario();
     $listagem = $lista->getList();
+
     $num = 0;
     $lista = "";
     foreach ($listagem as $value) {
-     //$id = "";
      $id = $listagem[$num][0];
-     //$nome = "";
      $nome = $listagem[$num][1];
-     //$email = "";
      $email = $listagem[$num][2];
      $lista .= "<tr>
      <td>" .$listagem[$num][0]. "</td>
      <td>" .$listagem[$num][1]. "</td>
      <td>" .$listagem[$num][2]. "</td>
-     <td><a class='btn btn-info' href='processa.php?edit=$nome $email $id'>Editar</a>
+     <td><a class='btn btn-info' href='processa.php?edit=$nome,$email,$id'>Editar</a>
      <a class='btn btn-danger' href='processa.php?delete=$id'>Deletar</a></td>
      </tr>";
      $num++;
     }
+    if ($listagem === NULL) {
+      echo "Nenhum registro";
+    }
     echo $lista;
     ?>
+
 </table>
 </div>
 </main>

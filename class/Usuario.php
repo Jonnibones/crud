@@ -95,9 +95,8 @@ public function updateUsuario($id, $newname, $newemail){
 	$this->setIdfuncionario($id);
 	$this->setNomefuncionario($newname);
 	$this->setEmailfuncionario($newemail);
-	$stmt = $this->conn->prepare("UPDATE tb_funcionarios SET nome_usuario = '$newname', email_usuario = '$newemail' WHERE id_usuario = $id");
+	$stmt = $this->conn->prepare("UPDATE tb_funcionarios SET nome_usuario = '$newname', email_usuario = '$newemail' WHERE id_usuario = '$id'");
 	$stmt->execute();
-	
 }catch(Exception $e){
 	print $e->getMessage();
 }
