@@ -14,7 +14,7 @@ $_SESSION['btnname'] = "Cadastrar";
  ?>
 
 <main>
-<!--Div para mensagem para quando uma ação é executada -->
+<!--Div de mensagem para quando uma ação é executada -->
 <div class="<?php echo $_SESSION['msgcolor']?>"><p><?php
   error_reporting(E_ALL ^ E_NOTICE);
   echo $_SESSION['msg'];
