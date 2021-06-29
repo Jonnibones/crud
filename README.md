@@ -13,7 +13,7 @@ CREATE TABLE `tb_funcionarios` (
   	`id_usuario` INT(11) NOT NULL AUTO_INCREMENT,
   	`nome_usuario` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
   	`email_usuario` VARCHAR(100) NOT NULL COLLATE 'utf8_general_ci',
-  	PRIMARY KEY (`id`) USING BTREE
+  	PRIMARY KEY (`id_usuario`) USING BTREE
   )
   COLLATE='utf8_general_ci'
   ENGINE=InnoDB
